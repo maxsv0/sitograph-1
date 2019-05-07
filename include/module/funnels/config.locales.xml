@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+<locales>
+	<locale name="ru">
+		<field name="module.funnels" value="Обработчик"/>
+		<field name="table.funnel_leads" value="Заявки"/>
+		<field name="table.funnel_leads.id" value="ID"/>
+		<field name="table.funnel_leads.published" value="Активно"/>
+		<field name="table.funnel_leads.deleted" value="Удалено"/>
+		<field name="table.funnel_leads.lang" value="Язык"/>
+		<field name="table.funnel_leads.author" value="Автор"/>
+
+		<field name="table.funnel_leads.date" value="Дата"/>
+		<field name="table.funnel_leads.updated" value="Обновлено"/>		
+
+		<field name="table.funnel_leads.funnels_id" value="ID Воронки"/>
+
+		<field name="table.funnel_leads.funnels_title" value="Воронка"/>
+
+		<field name="table.funnel_leads.funnel_forms_id" value="ID Заявки"/>
+
+		<field name="table.funnel_leads.funnel_forms_title" value="Заявка"/>
+
+		<field name="table.funnel_leads.status" value="Статус выгрузки"/>
+		<field name="table.funnel_leads.status_info" value="Ответ"/>
+	
+		<field name="table.funnel_leads.member_email" value="Email"/>
+		<field name="table.funnel_leads.member_phone" value="Телефон"/>
+		<field name="table.funnel_leads.member_name" value="Имя"/>
+	
+		<field name="table.funnel_leads.utm_source" value="utm_source"/>
+		<field name="table.funnel_leads.utm_campaign" value="utm_campaign"/>
+		<field name="table.funnel_leads.utm_medium" value="utm_medium"/>
+		<field name="table.funnel_leads.utm_content" value="utm_content"/>
+		<field name="table.funnel_leads.utm_term" value="utm_term"/>
+
+		<field name="table.funnels" value="Воронки"/>
+		<field name="table.funnels.id" value="ID"/>
+		<field name="table.funnels.published" value="Активно"/>
+		<field name="table.funnels.title" value="Название"/>
+		<field name="table.funnels.url" value="Основной путь"/>
+		
+
+		<field name="table.funnel_forms" value="Формы"/>
+		<field name="table.funnel_forms.id" value="ID"/>
+		<field name="table.funnel_forms.published" value="Активно"/>
+		<field name="table.funnel_forms.title" value="Название"/>
+
+		<field name="msg.funnels.funnel_forms_id_exists" value="Form id exists"/>
+		<field name="msg.funnels.funnel_leads_saved" value="Lead add successfully"/>
+	</locale>
+
+</locales>
+
+		
+</document>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+<config>
+	<param name="activationUrl" value="*"/>
+	<param name="baseUrl" value="/funn/"/>
+	<param name="itemsPerPage" value="10"/>
+	<param name="pageUrlParam" value="p"/>
+	<param name="searchUrlParam" value="s"/>
+	<param name="categoryUrlParam" value="category"/>
+	<param name="authorUrlParam" value="author"/>
+	<param name="previewItemsCount" value="10"/>
+	<param name="relatedItemsCount" value="6"/>
+	<param name="newestItemsCount" value="14"/>
+	<param name="adminMenu" value="1"/>
+	<param name="adminMenuOrder" value="28"/>
+	
+	<param name="accessAPIAdd" value="everyone"/>
+
+	<constant name="TABLE_FUNNELS_LEADS" value="funnel_leads"/>
+	<constant name="TABLE_FUNNELS_ARTICLE_CATEGORIES" value="article_categories"/>
+	
+	<filter url="*" action="FunnLoadPreview"/>
+	<filter url="/funn/" action="FunnLoadArticles"/>
+	<filter url="/funn/*" action="FunnLoadArticleDetails" setpage="/funn/"/>
+	
+	<api name="funnels" action="api_request_funnels"/>
+	
+	
+	<table name="funnels" index="id" title="title">
+		<field name="id" type="id" readonly="1"/>
+		<field name="published" type="published"/>
+		<field name="deleted" type="deleted"/>
+		<field name="author" type="author"/>
+		<field name="updated" type="updated"/>
+		<field name="lang" type="lang" listskip="1"/>
+		<field name="title" type="str"/>
+		<field name="url" type="str"/>
+	</table>
+	<table name="funnel_forms" index="id" title="title">
+		<field name="id" type="id" readonly="1"/>
+		<field name="published" type="published"/>
+		<field name="deleted" type="deleted"/>
+		<field name="author" type="author"/>
+		<field name="updated" type="updated"/>
+		<field name="lang" type="lang" listskip="1"/>
+		<field name="title" type="str"/>
+	</table>
+	<table name="funnel_leads" index="id" title="funnel_forms_title">
+		<field name="id" type="id" readonly="1"/>
+		<field name="published" type="published"/>
+		<field name="deleted" type="deleted"/>
+		<field name="author" type="author"/>
+		<field name="updated" type="updated"/>
+		<field name="date" type="date"/>
+		<field name="lang" type="lang" listskip="1"/>
+		<field name="status" type="bool"/>
+		<field name="status_info" type="text"/>
+
+		<field name="funnels_id" type="int" select-from="table:funnels"/>
+		<field name="funnels_title" type="str" listskip="1"/>
+
+		<field name="funnel_forms_id" type="int" select-from="table:funnel_forms"/>
+		<field name="funnel_forms_title" type="str" listskip="1"/>
+
+		<field name="member_email" type="str"/>
+		<field name="member_phone" type="str"/>
+		<field name="member_name" type="str"/>
+		
+		<field name="utm" type="str" listskip="1"/>
+
+		<field name="utm_source" type="str"/>
+		<field name="utm_campaign" type="str"/>
+		<field name="utm_medium" type="str"/>
+		<field name="utm_content" type="str"/>
+		<field name="utm_term" type="str"/>
+	</table>
+</config>
+
+</document>

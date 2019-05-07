@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+<locales>
+	<locale name="ru">
+		<field name="module.funnels" value="Обработчик"/>
+		<field name="table.leads" value="Заявки"/>
+		<field name="table.leads.id" value="ID"/>
+		<field name="table.leads.published" value="Активно"/>
+		<field name="table.leads.deleted" value="Удалено"/>
+		<field name="table.leads.author" value="Автор"/>
+		<field name="table.leads.updated" value="Обновлено"/>
+		<field name="table.leads.lang" value="Язык"/>
+		<field name="table.leads.sticked" value="Топ"/>
+		<field name="table.leads.url" value="URL"/>
+		<field name="table.leads.link" value="Внешняя ссылка"/>
+		<field name="table.leads.date" value="Дата"/>
+		<field name="table.leads.email" value="Email автора"/>
+		<field name="table.leads.title" value="Заголовок"/>
+		<field name="table.leads.description" value="Краткий текст"/>
+		<field name="table.leads.text" value="Значение"/>
+		<field name="table.leads.pic" value="Изображение большое"/>
+		<field name="table.leads.pic_preview" value="Изображение"/>
+		<field name="table.leads.album_id" value="Альбом"/>
+		<field name="table.leads.views" value="Просмотров"/>
+		<field name="table.leads.shares" value="Публикаций"/>
+		<field name="table.leads.comments" value="Коментариев"/>
+		<field name="table.leads.seo_title" value="Title страницы"/>
+		<field name="table.leads.seo_description" value="Описание страницы"/>
+		<field name="table.leads.seo_keywords" value="Ключевые слова"/>
+		<field name="msg.blog.saved" value="Article saved successfully"/>
+	</locale>
+    <locale name="ua">
+		<field name="module.blog" value="Блог"/>
+		<field name="structure.blog" value="Блог"/>
+		<field name="table.articles" value="Блог, статті"/>
+		<field name="table.articles.id" value="ID"/>
+		<field name="table.articles.published" value="Активно"/>
+		<field name="table.articles.deleted" value="Вилучено"/>
+		<field name="table.articles.author" value="Автор"/>
+		<field name="table.articles.updated" value="Оновлене"/>
+		<field name="table.articles.lang" value="Мова"/>
+		<field name="table.articles.sticked" value="Топ"/>
+		<field name="table.articles.url" value="URL"/>
+		<field name="table.articles.link" value="External Link"/>
+		<field name="table.articles.date" value="Дата"/>
+		<field name="table.articles.email" value="Email автора"/>
+		<field name="table.articles.title" value="Заголовок"/>
+		<field name="table.articles.description" value="Стислий текст"/>
+		<field name="table.articles.text" value="Значення"/>
+		<field name="table.articles.pic" value="Зображення велике"/>
+		<field name="table.articles.pic_preview" value="Зображення"/>
+		<field name="table.articles.album_id" value="Альбом"/>
+		<field name="table.articles.views" value="Переглядів"/>
+		<field name="table.articles.shares" value="Публікацій"/>
+		<field name="table.articles.comments" value="Коментарів"/>
+		<field name="table.articles.seo_title" value="Title сторінки"/>
+		<field name="table.articles.seo_description" value="Опис сторінки"/>
+		<field name="table.articles.seo_keywords" value="Ключові слова"/>
+		<field name="table.article_categories" value="Рубрики та теги"/>
+		<field name="table.article_categories.id" value="ID"/>
+		<field name="table.article_categories.published" value="Активно"/>
+		<field name="table.article_categories.deleted" value="Вилучено"/>
+		<field name="table.article_categories.author" value="Автор"/>
+		<field name="table.article_categories.updated" value="Оновлено"/>
+		<field name="table.article_categories.lang" value="Мова"/>
+		<field name="table.article_categories.url" value="URL"/>
+		<field name="table.article_categories.article_id" value="Стаття"/>
+		<field name="table.article_categories.title" value="Заголовок"/>
+        <field name="blog.continue_reading" value="Детальніше"/>
+        <field name="blog.label_search" value="Пошук:"/>
+        <field name="blog.label_popular_posts" value="Популярні"/>
+        <field name="blog.label_latest_posts" value="Останні публікації"/>
+        <field name="blog.label_related_posts" value="Пов'язані публікації"/>
+        <field name="blog.btn_search" value="Знайти"/>
+        <field name="blog.search_no_result" value="Статті не були знайдені."/>
+		<field name="blog.post1" value="Структура папок и их использование"/>
+		<field name="blog.post2" value="Красивая фотогалерея прикреплена к этому сообщению"/>
+		<field name="blog.post3" value="PHP Framework Layers"/>
+		<field name="blog.posted_on" value="опубликовал в"/>
+		<field name="blog.views" value="Переглядів"/>
+		<field name="blog.shares" value="Публікацій"/>
+		<field name="blog.comments" value="Коментарів"/>
+		<field name="blog.attached_gallery" value="Прикріплена галерея:"/>
+		<field name="email.blog_admin_notify" value="New article was added"/>
+		<field name="msg.blog.noemail" value="Field 'E-mail' can't be empty"/>
+		<field name="msg.blog.nourl" value="Field 'URL' can't be empty"/>
+		<field name="msg.blog.notitle" value="Field 'Title' can't be empty"/>
+		<field name="msg.blog.saved" value="Article saved successfully"/>
+	</locale>
+
+</locales>
+
+		
+</document>
