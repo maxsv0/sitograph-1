@@ -14,13 +14,13 @@
 		<field name="table.funnel_leads.date" value="Дата"/>
 		<field name="table.funnel_leads.updated" value="Обновлено"/>		
 
-		<field name="table.funnel_leads.funnels_id" value="ID Воронки"/>
+		<field name="table.funnel_leads.funnels_id" value="Воронка"/>
 
 		<field name="table.funnel_leads.funnels_title" value="Воронка"/>
 
-		<field name="table.funnel_leads.funnel_forms_id" value="ID Заявки"/>
+		<field name="table.funnel_leads.funnel_forms_id" value="Форма"/>
 
-		<field name="table.funnel_leads.funnel_forms_title" value="Заявка"/>
+		<field name="table.funnel_leads.funnel_forms_title" value="Форма"/>
 
 		<field name="table.funnel_leads.status" value="Статус выгрузки"/>
 		<field name="table.funnel_leads.status_info" value="Ответ"/>
@@ -28,24 +28,39 @@
 		<field name="table.funnel_leads.member_email" value="Email"/>
 		<field name="table.funnel_leads.member_phone" value="Телефон"/>
 		<field name="table.funnel_leads.member_name" value="Имя"/>
-	
+		
+		
+		<field name="table.funnel_leads.utm" value="utm string"/>
 		<field name="table.funnel_leads.utm_source" value="utm_source"/>
 		<field name="table.funnel_leads.utm_campaign" value="utm_campaign"/>
 		<field name="table.funnel_leads.utm_medium" value="utm_medium"/>
 		<field name="table.funnel_leads.utm_content" value="utm_content"/>
 		<field name="table.funnel_leads.utm_term" value="utm_term"/>
 
+		<field name="table.funnel_leads.crm_member_id" value="CRM ID контакта"/>
+		<field name="table.funnel_leads.crm_lead_id" value="CRM ID сделки"/>
+
+
+
 		<field name="table.funnels" value="Воронки"/>
 		<field name="table.funnels.id" value="ID"/>
 		<field name="table.funnels.published" value="Активно"/>
 		<field name="table.funnels.title" value="Название"/>
-		<field name="table.funnels.url" value="Основной путь"/>
+		<field name="table.funnels.url" value="URL (основной)"/>
+		<field name="table.funnels.pipeline_id" value="CRM ID воронки"/>
 		
 
 		<field name="table.funnel_forms" value="Формы"/>
 		<field name="table.funnel_forms.id" value="ID"/>
 		<field name="table.funnel_forms.published" value="Активно"/>
 		<field name="table.funnel_forms.title" value="Название"/>
+		<field name="table.funnel_forms.pipeline_status_id" value="CRM ID статус"/>
+		<field name="table.funnel_forms.crm_lead_method" value="CRM новая сделка"/>
+		<field name="table.funnel_forms.response_page_link" value="URL редиректа"/>
+		<field name="table.funnel_forms.price" value="Стоимость"/>
+		<field name="table.funnel_forms.сurrency" value="Валюта [UAH, USD, RUB]"/>
+		
+		
 
 		<field name="msg.funnels.funnel_forms_id_exists" value="Form id exists"/>
 		<field name="msg.funnels.funnel_leads_saved" value="Lead add successfully"/>

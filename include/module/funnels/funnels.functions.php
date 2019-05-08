@@ -45,14 +45,7 @@ function api_funnels_lead_add($row, $options = array()) {
         $row["utm_source"] = $utm_arr["utm_source"];
         $row["utm_term"] = $utm_arr["utm_term"];
         $row["utm_campaign"] = $utm_arr["utm_campaign"];
-        //$row['utm_content'] = $utm_arr['utm_content'];
-        //$row['utm_medium'] = $utm_arr['utm_medium'];
-        //$row['utm_source'] = $utm_arr['utm_source'];
-        //$row['utm_term'] = $utm_arr['utm_term'];
-        //$row['utm_campaign'] = $utm_arr['utm_campaign'];
-    } 
-
-    //var_dump();
+    }
 
     $resultCheck = db_get(
         TABLE_FUNNELS_LEADS,

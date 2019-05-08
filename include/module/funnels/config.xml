@@ -36,6 +36,7 @@
 		<field name="lang" type="lang" listskip="1"/>
 		<field name="title" type="str"/>
 		<field name="url" type="str"/>
+		<field name="pipeline_id" type="str"/>
 	</table>
 	<table name="funnel_forms" index="id" title="title">
 		<field name="id" type="id" readonly="1"/>
@@ -45,6 +46,12 @@
 		<field name="updated" type="updated"/>
 		<field name="lang" type="lang" listskip="1"/>
 		<field name="title" type="str"/>
+		<field name="pipeline_status_id" type="str"/>
+		<field name="crm_lead_method" type="bool"/>
+		<field name="price" type="str"/>
+		<field name="сurrency" type="str"/>
+		<field name="response_page_link" type="str"/>
+		
 	</table>
 	<table name="funnel_leads" index="id" title="funnel_forms_title">
 		<field name="id" type="id" readonly="1"/>
@@ -54,8 +61,7 @@
 		<field name="updated" type="updated"/>
 		<field name="date" type="date"/>
 		<field name="lang" type="lang" listskip="1"/>
-		<field name="status" type="bool"/>
-		<field name="status_info" type="text"/>
+		
 
 		<field name="funnels_id" type="int" select-from="table:funnels"/>
 		<field name="funnels_title" type="str" listskip="1"/>
@@ -63,10 +69,6 @@
 		<field name="funnel_forms_id" type="int" select-from="table:funnel_forms"/>
 		<field name="funnel_forms_title" type="str" listskip="1"/>
 
-		<field name="member_email" type="str"/>
-		<field name="member_phone" type="str"/>
-		<field name="member_name" type="str"/>
-		
 		<field name="utm" type="str" listskip="1"/>
 
 		<field name="utm_source" type="str"/>
@@ -74,6 +76,18 @@
 		<field name="utm_medium" type="str"/>
 		<field name="utm_content" type="str"/>
 		<field name="utm_term" type="str"/>
+
+		<field name="member_email" type="str"/>
+		<field name="member_phone" type="str"/>
+		<field name="member_name" type="str"/>
+
+		<field name="status" type="bool"/>
+		<field name="status_info" type="text"/>
+
+		
+		<field name="crm_member_id" type="str"/>
+		<field name="crm_lead_id" type="str"/>
+		
 	</table>
 </config>
 
