@@ -16,9 +16,11 @@
 	<param name="adminMenuOrder" value="28"/>
 	
 	<param name="accessAPIAdd" value="everyone"/>
+	<param name="accessAPISendCRM" value="everyone"/>
 
-	<constant name="TABLE_FUNNELS_LEADS" value="funnel_leads"/>
-	<constant name="TABLE_FUNNELS_ARTICLE_CATEGORIES" value="article_categories"/>
+	<constant name="TABLE_FUNNEL_LEADS" value="funnel_leads"/>
+	<constant name="TABLE_FUNNEL_FORMS" value="funnel_forms"/>
+	<constant name="TABLE_FUNNELS" value="funnels"/>
 	
 	<filter url="*" action="FunnLoadPreview"/>
 	<filter url="/funn/" action="FunnLoadArticles"/>

@@ -1,0 +1,1 @@
+{include "$themePath/sitograph/funnels/list-table.tpl" listTable=$admin_list}
