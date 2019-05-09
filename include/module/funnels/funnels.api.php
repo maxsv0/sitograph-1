@@ -23,8 +23,19 @@ function api_request_funnels($module) {
                     "msg" => _t("msg.api.no_access"),
                 );
             } else {
-                $item = msv_process_tabledata(TABLE_FUNNELS_LEADS, "");
+                $item = msv_process_tabledata(TABLE_FUNNEL_LEADS, "");
                 $resultQuery = api_funnels_lead_add($item, array("EmailNotifyAdmin"));
+            }
+            break;
+        case "send_crm":
+            if (!msv_check_accessuser($module->accessAPISendCRM)) {
+                $resultQuery = array(
+                    "ok" => false,
+                    "data" => array(),
+                    "msg" => _t("msg.api.no_access"),
+                );
+            } else {
+                $resultQuery = api_funnels_crm_lead_send_all();
             }
             break;
         default:

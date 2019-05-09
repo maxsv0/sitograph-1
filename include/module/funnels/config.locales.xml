@@ -22,8 +22,8 @@
 
 		<field name="table.funnel_leads.funnel_forms_title" value="Форма"/>
 
-		<field name="table.funnel_leads.status" value="Статус выгрузки"/>
-		<field name="table.funnel_leads.status_info" value="Ответ"/>
+		<field name="table.funnel_leads.status" value="Отправлено"/>
+		<field name="table.funnel_leads.status_info" value="CRM ответ"/>
 	
 		<field name="table.funnel_leads.member_email" value="Email"/>
 		<field name="table.funnel_leads.member_phone" value="Телефон"/>
@@ -64,6 +64,7 @@
 
 		<field name="msg.funnels.funnel_forms_id_exists" value="Form id exists"/>
 		<field name="msg.funnels.funnel_leads_saved" value="Lead add successfully"/>
+		<field name="btn.funnels.send" value="Отправить"/>
 	</locale>
 
 </locales>
