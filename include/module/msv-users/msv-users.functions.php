@@ -63,6 +63,7 @@ function msv_add_user($row, $options = array()) {
     if (empty($row["email_verified"])) {
         $row["verify_token"] = substr(md5(microtime().rand()), 0, 10);
     }
+    if (empty($row["crm_id"])) $row["crm_id"] = "";
 
     // replace password with hash
     $row["password_orig"] = $row["password"];

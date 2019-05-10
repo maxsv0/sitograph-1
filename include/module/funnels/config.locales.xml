@@ -22,13 +22,14 @@
 
 		<field name="table.funnel_leads.funnel_forms_title" value="Форма"/>
 
-		<field name="table.funnel_leads.status" value="Отправлено"/>
+		<field name="table.funnel_leads.status" value="CRM статус"/>
 		<field name="table.funnel_leads.status_info" value="CRM ответ"/>
 	
 		<field name="table.funnel_leads.member_email" value="Email"/>
 		<field name="table.funnel_leads.member_phone" value="Телефон"/>
 		<field name="table.funnel_leads.member_name" value="Имя"/>
-		
+		<field name="table.funnel_leads.member_user" value="Участник"/>
+		<field name="table.funnel_leads.member_user_id" value="ID участника"/>
 		
 		<field name="table.funnel_leads.utm" value="utm string"/>
 		<field name="table.funnel_leads.utm_source" value="utm_source"/>

@@ -45,15 +45,47 @@ function api_funnels_lead_add($row, $options = array()) {
         $row["utm_campaign"] = $utm_arr["utm_campaign"];
     }
 
+    $resultCheckUser = db_get(
+        TABLE_USERS,
+        " `email` = '".db_escape($row["member_email"])."'"
+    );
+
+    if ($resultCheckUser["ok"] && !empty($resultCheckUser["data"])) {
+        $userResult = $resultCheckUser["data"];
+    } else {
+        $userRow = array(
+            "email" => $row["member_email"],
+            "name" => $row["member_name"],
+            "phone" => $row["member_phone"],
+            "email_verified" => 1,
+            "iss" => 'funnels',
+        );
+
+        $userResult = msv_add_user($userRow, array("EmailNotifyAdmin"));
+        $userResult = $userResult["data"];
+    }
+
+    $row["member_user"] = $userResult["email"];
+    $row["member_user_id"] = $userResult["id"];
+
+    if (!empty($userResult["crm_id"])) {
+        $row["crm_member_id"] = $userResult["crm_id"];
+    }
+
+
+
     $resultCheck = db_get(
         TABLE_FUNNEL_LEADS,
         " `member_email` = '".db_escape($row["member_email"]).
         "' AND  `funnel_forms_id` = ".$row["funnel_forms_id"]
     );
+
     if ($resultCheck["ok"] && !empty($resultCheck["data"])) {
         $result["msg"] = _t("msg.users.email_exists");
         return $result;
     }
+
+    
 
     if (empty($row["published"])) {
         $row["published"] = 1;
@@ -71,101 +103,103 @@ function api_funnels_lead_add($row, $options = array()) {
 }
 
 function sendAmo($data = false) {
+
+    $result = array(
+        "ok" => false,
+        "data" => array(),
+        "msg" => "Ошибка запроса",
+    );
+
     $path_amolib = ABS_INCLUDE."/custom/AmoCRM/amocrm.phar";
-    $result = require_once ($path_amolib);
+    require_once ($path_amolib);
 
-    if ($data) { 
+    try {
+        
+        $amo = new \AmoCRM\Client(
+            'vshurinaonline',
+            'vshurina.online@gmail.com',
+            'a1c3640ac7565121ff249457d7f4ef339abd1a45'
+        );
 
-        $err = null;       
+        $result_data = array();
 
-        try {
+        $lead = $amo->lead;
+
+        $lead['status_id'] = $data['lead_status_id'];
+        $lead['price'] = $data['lead_sale'] ? (int)$data['lead_sale'] : 0;
+
+        if (!($data['lead_method'] && empty($data['crm_lead_id']) ) ) {
+
+            $responce_lead = $lead->apiUpdate((int)$data['crm_lead_id'], $data['updated_at']);
+
+        } else {
+
+            $lead['name'] = 'Сделка #' . $data['lead_id'];
+            $lead['created_by'] = 0;
+            $lead['date_create'] = strtotime($data['created_at']);
+            $lead['tags'] = $data['lead_utm_source'] ? $data['lead_utm_source'] : $data['lead_name'];
             
-            $amo = new \AmoCRM\Client(
-                'vshurinaonline',
-                'vshurina.online@gmail.com',
-                'a1c3640ac7565121ff249457d7f4ef339abd1a45'
-            );
+            $lead->addCustomField(65499, $data['lead_id']);
 
-            $result_data = array();
+            if ($data['lead_utm']) {
 
-            $lead = $amo->lead;
+                $lead->addCustomField(65443, $data['lead_utm_source']);
+                $lead->addCustomField(65447, $data['lead_utm_campaign']);
+                $lead->addCustomField(65449, $data['lead_utm_medium']);
+                $lead->addCustomField(65453, $data['lead_utm_content']);
+                $lead->addCustomField(65457, $data['lead_utm_term']);
 
-            $lead['status_id'] = $data['lead_status_id'];
-            $lead['price'] = $data['lead_sale'] ? (int)$data['lead_sale'] : 0;
-
-            if (!$data['lead_method'] && !empty($data['crm_lead_id']) ) {
-
-                $responce_lead = $lead->apiUpdate((int)$data['crm_lead_id'], $data['updated_at']);
-
-            } else {
-
-                $lead['name'] = 'Сделка #' . $data['lead_id'];
-                $lead['created_by'] = 0;
-                $lead['date_create'] = strtotime($data['created_at']);
-                $lead['tags'] = $data['lead_utm_source'] ? $data['lead_utm_source'] : $data['lead_name'];
-                
-                $lead->addCustomField(65499, $data['lead_id']);
-
-                if ($data['lead_utm']) {
-
-                    $lead->addCustomField(65443, $data['lead_utm_source']);
-                    $lead->addCustomField(65447, $data['lead_utm_campaign']);
-                    $lead->addCustomField(65449, $data['lead_utm_medium']);
-                    $lead->addCustomField(65453, $data['lead_utm_content']);
-                    $lead->addCustomField(65457, $data['lead_utm_term']);
-
-                    $lead->addCustomField(65511, $data['lead_utm']);
-                }
-
-                $responce_lead = $lead->apiAdd();
-
+                $lead->addCustomField(65511, $data['lead_utm']);
             }
 
-            $contact = $amo->contact;
+            $responce_lead = $lead->apiAdd();
 
-            $contact['linked_leads_id'] = $responce_lead;
+        }
 
-            if ($data['contacts_phone']) {
+        $contact = $amo->contact;
 
-                $contact->addCustomField(60163, [[$data['contacts_phone'], 84909]]);
+        $contact['linked_leads_id'] = $responce_lead;
 
-            }
+        if ($data['contacts_phone']) {
 
-            if ($data['crm_contacts_id']) {
+            $contact->addCustomField(60163, [[$data['contacts_phone'], 84909]]);
 
-                $contact['updated_at'] = $data['updated_at']; // date('l dS of F Y h:i:s A', $data['updated_at']);
+        }
 
-                $responce_contact = $contact->apiUpdate((int)$user_id, $data['updated_at']);
+        if ($data['crm_contacts_id']) {
 
-            } else {
+            $contact['updated_at'] = $data['updated_at']; // date('l dS of F Y h:i:s A', $data['updated_at']);
 
-                $contact['name'] = $data['contacts_name'];
-                $contact['date_create'] = strtotime($data['created_at']);
-                $contact['created_by'] = 0;
-            
-                $contact->addCustomField(60165, [[$data['contacts_email'], 84919]]);
+            $responce_contact = $contact->apiUpdate((int)$data['crm_contacts_id'], $data['updated_at']);
+            $result_data['crm_member_id'] = '';
+        } else {
 
-                $responce_contact = $contact->apiAdd();
+            $contact['name'] = $data['contacts_name'];
+            $contact['date_create'] = strtotime($data['created_at']);
+            $contact['created_by'] = 0;
+        
+            $contact->addCustomField(60165, [[$data['contacts_email'], 84919]]);
 
-            }
+            $responce_contact = $contact->apiAdd();
 
             $result_data['crm_member_id'] = $responce_contact;
-            $result_data['crm_lead_id'] = $responce_lead;
 
         }
 
-        catch (\AmoCRM\Exception $e) {
-            $err = $e->getCode(). ' : ' .$e->getMessage();
-        }
+        
+        $result_data['crm_lead_id'] = $responce_lead;
 
         $result = array(
             "ok" => true,
             "data" => $result_data,
-            "msg" => $err,
+            "msg" => 'ok',
         );
 
-    } else {
-        $result = false;
+    }
+
+    catch (\AmoCRM\Exception $e) {
+        $err = $e->getCode(). ' : ' .$e->getMessage();
+        $result['msg'] = $err;
     }
 
     return $result;
