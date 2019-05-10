@@ -33,6 +33,7 @@
 		<field name="table.users.reset_token" value="Reset Token"/>
 		<field name="table.users.verify_token" value="Verify Token"/>
 		<field name="table.users.access_token" value="Access Token"/>
+		<field name="table.users.crm_id" value="Crm User ID"/>
 		<field name="msg.users.noemail" value="Email can't be empty"/>
 		<field name="msg.users.nopassword" value="Enter your password"/>
 		<field name="msg.users.nopassword2" value="Enter password confirmation"/>
@@ -122,6 +123,7 @@
 		<field name="table.users.reset_token" value="Токен сброса пароля"/>
 		<field name="table.users.verify_token" value="Токен проверки email"/>
 		<field name="table.users.access_token" value="Токен доступа"/>
+		<field name="table.users.crm_id" value="CRM ID пользователя"/>
 		<field name="msg.users.noemail" value="Не указан email"/>
 		<field name="msg.users.nopassword" value="Укажите ваш пароль"/>
 		<field name="msg.users.nopassword2" value="Укажите подтверждение пароля"/>

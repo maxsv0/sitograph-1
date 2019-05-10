@@ -78,17 +78,21 @@
 		<field name="utm_medium" type="str"/>
 		<field name="utm_content" type="str"/>
 		<field name="utm_term" type="str"/>
-
+		
 		<field name="member_email" type="str"/>
 		<field name="member_phone" type="str"/>
 		<field name="member_name" type="str"/>
+		<field name="member_user" type="str" select-from="table:users"/>
+		<field name="member_user_id" type="int" listskip="1"/>
+
+		<field name="crm_member_id" type="str"/>
+		<field name="crm_lead_id" type="str"/>
 
 		<field name="status" type="bool"/>
 		<field name="status_info" type="text"/>
 
 		
-		<field name="crm_member_id" type="str"/>
-		<field name="crm_lead_id" type="str"/>
+		
 		
 	</table>
 </config>
